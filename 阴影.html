@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>曲线阴影和翘边阴影</title>
+<style type="text/css">
+html,body,ul,div{margin: 0;padding: 0;list-style: none;font-family: 'Microsoft Yahei', sans-serif;}
+.wrap{width: 80%;
+	  height: 200px;
+	  margin:0 auto;
+	  text-align: center;
+	  line-height: 200px;
+	  background-color: #fff;
+}
+/*相对盒子定位*/
+.effect{box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0px 0px 40px rgba(0, 0, 0, 0.2) inset;
+		-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3) , 0 0 40px rgba(0, 0, 0, 0.2) inset;
+   	    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.2) inset; 
+    	position: relative;
+    }
+/*通过position的定位拉出一个矩形，给矩形添加阴影，然后隐藏矩形; before,after双层加深阴影*/
+.effect:before,.effect:after{content: "";
+			   position: absolute;
+			   background-color: rgba(0,0,0,0);
+			   top:10%;
+			   left:10px;
+			   right:10px;
+			   bottom: 0;
+			   border-radius:100px / 10px;
+			   box-shadow:0 0 20px  rgba(0,0,0,0.8);
+			   -webkit-box-shadow:0 0 20px  rgba(0,0,0,0.8);
+			   -moz-box-shadow:0 0 20px  rgba(0,0,0,0.8);
+			   z-index: -999;
+}
+
+.box{
+	width:980px;
+	margin: 20px auto;
+	padding: 0;
+}
+.box li{ margin:0 11px;
+	width: 300px;
+	height: 220px;
+	border: 2px solid #efefef;
+	float: left;
+	text-align: center;
+	position: relative;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.27),0 0 60px rgba(0,0,0,0.1) inset;background-color: #fff;
+	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.27),0 0 60px rgba(0,0,0,0.1) inset;background-color: #fff;
+	-moz-box-shadow: 0 1px 4px rgba(0,0,0,0.27),0 0 60px rgba(0,0,0,0.1) inset;background-color: #fff;
+	
+}
+	
+.box li:before,.box li:after{
+	z-index: -2;
+	content: "";
+	position: absolute;
+	background:transparent;
+	width: 90%;
+	height: 80%;
+	left: 20px;
+	bottom: 8px;
+	box-shadow:0 8px 20px  rgba(0,0,0,0.8);
+	-webkit-box-shadow:0 8px 20px  rgba(0,0,0,0.8);
+	-moz-box-shadow:0 8px 20px  rgba(0,0,0,0.8);
+	
+}
+.box li:before{-webkit-transform: skew(-12deg) rotate(-4deg); 
+	 		   -moz-transform:skew(-12deg) rotate(-4deg); 
+	 		   -ms-transform: skew(-12deg) rotate(-4deg); 	
+	 		   -o-transform: skew(-12deg) rotate(-4deg); 
+	 			
+				/*border-radius: 0 20px;*/
+}
+.box li:after{-webkit-transform: skew(12deg) rotate(4deg);
+			  -moz-transform: skew(12deg) rotate(4deg);
+			  -ms-transform: skew(12deg) rotate(4deg);
+			  -o-transform: skew(12deg) rotate(4deg);
+				/*border-radius: 20px 0;*/
+}
+li img{
+	width:290px;
+	height:210px;
+	padding:5px;
+}
+</style>
+</head>
+<body>
+	<!-- effect类单独添加阴影效果 -->
+  <div class="wrap effect">
+     <h3>曲线阴影</h3>
+  </div>
+  <ul class="box">
+      <li><img src="images/1.jpg"/><span>翘边阴影</span></li>
+      <li><img src="images/2.jpg"/><span>翘边阴影</span></li>
+      <li><img src="images/3.jpg"/><span>翘边阴影</span></li>
+  </ul>
+ <!-- tdy853839625@qq.com -->
+</body>
+</html>
